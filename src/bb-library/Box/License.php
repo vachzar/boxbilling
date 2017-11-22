@@ -56,7 +56,7 @@ class Box_License implements \Box\InjectionAwareInterface
 
     public function isPro()
     {
-        return ($this->getBBType() == \Box_Version::TYPE_PRO);
+        return true;//($this->getBBType() == \Box_Version::TYPE_PRO);
     }
 
     private function getBBType()

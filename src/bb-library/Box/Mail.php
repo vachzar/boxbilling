@@ -110,9 +110,9 @@ class Box_Mail
             'subject'   => $this->_subject,
             'html'      => $this->_bodyHtml . 'Reply Address: ' . $this->_from,
             'text'      => $this->_bodyHtml . 'Reply Address: ' . $this->_from,
-            'from'      => $replyaddy,
+            'from'      => $this->_from,
         );
-        
+        //$replyaddy,
         // create the request URL
         $request =  'https://api.sendgrid.com/api/mail.send.json';
         
@@ -124,7 +124,8 @@ class Box_Mail
         // Tell curl not to return headers, but do return the response
         curl_setopt($session, CURLOPT_HEADER, false);
         // Tell PHP not to use SSLv3 (instead opting for TLS)
-        curl_setopt($session, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+        curl_setopt($session, CURLOPT_SSLVERSION, 6);
+        //curl_setopt($session, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
         curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
         // obtain response
         $response = curl_exec($session);
